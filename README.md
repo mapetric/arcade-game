@@ -2,9 +2,18 @@
 
 Frogger inspired classic arcade game
 
+### How to set up locally (options)
+
+* Download the .zip file and extract it locally. Play the game by opening the Index file.
+* Use git to clone the repository and play the game by opening Index file.
+
+```git clone https://github.com/mapetric/arcade-game```
+
+
+
 ### How to play
 
-* Open https://mapetric.github.io/arcade-game. This is the live demo.
+* [live demo](https://mapetric.github.io/arcade-game)
 * You move by using arrow keys.
 * Your goal is to collect as many gems as you can and deposit them into the river.
 * Be careful if you get hit by a bug you are going to lose three gems you are carrying.
@@ -13,7 +22,6 @@ Frogger inspired classic arcade game
 * If you die and there are more than three enemies present one of them will despawn.
 * You can change the basic setting in settings.js.
 * You can change your character by using numbers (1-5).
-* Blue gems are worth 1 point (80% spawn) , green ones are worth 2 (15% spawn) and orange ones are worth 3 points(5% spawn).
 
 ### Screenshots
 

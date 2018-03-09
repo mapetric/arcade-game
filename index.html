@@ -7,25 +7,44 @@
       <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-      <div id="myModal" class="modal">
+      <i class="help fa fa-question"></i>
+      <div class="overlay">
+            <div class="overlay-content">
+                  <div class="overlay-header">
+                        <span id="close" class="close">&times;</span>
+                        <h2>Instructions!</h2>
+                  </div>
+                  <ul class="overlay-list">
+                        <li>You move by using arrow keys.</li>
+                        <li>Your goal is to collect as many gems as you can and deposit them into the river.</li>
+                        <li>Be careful if you get hit by a bug you are going to lose three gems you are carrying.</li>
+                        <li>Every time you deposit five or more gems at once you get an additional life.</li>
+                        <li>Every forth gem you pick up another enemy is going to spawn.</li>
+                        <li>If you die and there are more than three enemies present one of them will despawn.</li>
+                        <li>You can change the basic setting in settings.js.</li>
+                        <li>You can change your character by using numbers (1-5).</li>
+                  </ul>
+            </div>
+      </div>
+      <div class="modal">
             <div class="modal-content">
                   <div class="modal-header">
                         <span class="close">&times;</span>
                         <h2>Congratulations!</h2>
                   </div>
                   <div class="modal-body">
-                        <p id="modal-text">
+                        <p class="modal-text">
                               You deposited <span>10</span> gems while being chased by <span>10</span> enemies!
                         </p>
                   </div>
             </div>
       </div>
       <main>
-            <canvas id="screen"></canvas>
-            <span class="info" id="lives">LIVES : <span>5</span> <i class="fa fa-heart"></i></span>
-            <span class="info" id="gemsCarried">GEMS C : <span>0</span> <i class="fa fa-diamond"></i></span>
-            <span class="info" id="gemsDeposited">GEMS D : <span>0</span> <i class="fa fa-diamond"></i></span>
-            <span class="info" id="enemies">ENEMIES : <span>3</span> <i class="fa fa-bug"></i></span>
+            <canvas class="screen"></canvas>
+            <span class="info lives">LIVES : <span>5</span> <i class="fa fa-heart"></i></span>
+            <span class="info gemsCarried">GEMS C : <span>0</span> <i class="fa fa-diamond"></i></span>
+            <span class="info gemsDeposited">GEMS D : <span>0</span> <i class="fa fa-diamond"></i></span>
+            <span class="info enemies">ENEMIES : <span>3</span> <i class="fa fa-bug"></i></span>
       </main>
 
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>

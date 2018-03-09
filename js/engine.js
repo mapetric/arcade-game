@@ -20,7 +20,7 @@ var Engine = (function(global) {
      */
     var doc = global.document,
         win = global.window,
-        canvas = doc.getElementById('screen'),
+        canvas = doc.getElementsByClassName('screen')[0],
         ctx = canvas.getContext('2d'),
         lastTime;
 

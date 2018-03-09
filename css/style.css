@@ -1,11 +1,56 @@
 body {
       text-align: center;
-      align-content: center;
 }
 
 main {
       display: flex;
       justify-content: center;
+}
+
+.overlay-header {
+      padding: 2px 16px;
+      background-color: #02b3e4;
+      color: white;
+}
+
+.help {
+      font-size: 3em;
+      font-weight: bold;
+      float: left;
+      display: none;
+      position: absolute;
+}
+
+.help:hover,
+.help:focus {
+      text-decoration: none;
+      color: blue;
+      cursor: pointer;
+}
+
+.overlay {
+      width: 100%;
+      height: 100%;
+      display: block;
+      position: absolute;
+      left: 0;
+      top: 0;
+}
+
+.overlay-content {
+      width: 40%;
+      margin: auto;
+      position: relative;
+      z-index: 1;
+      background-color: white;
+      padding: 0;
+      margin-top: 200px;
+      border: 1px solid #888;
+}
+
+.overlay-list {
+      list-style: none;
+      padding: 20px;
 }
 
 .info {
@@ -15,27 +60,27 @@ main {
       color: white;
 }
 
-#lives {
+.lives {
       margin-left: -192px;
       margin-top: 485px;
 }
 
-#gemsCarried {
+.gemsCarried {
       margin-left: -185px;
       margin-top: 505px;
 }
 
-#gemsDeposited {
+.gemsDeposited {
       margin-left: -185px;
       margin-top: 525px;
 }
 
-#enemies {
+.enemies {
       margin-left: -182px;
       margin-top: 545px;
 }
 
-#screen {
+.screen {
       position: absolute;
       z-index: -1;
 }

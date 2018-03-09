@@ -1,3 +1,5 @@
+'use strict';
+
 let gemsCarried = 0;
 let gemsDeposited = 0;
 let enemies = 3;
@@ -5,11 +7,14 @@ let gemsPickedUp = 0;
 let listening = true;
 let lives = startingLives;
 
-const $lives = $('#lives').children().first();
-const $gemsCarried = $('#gemsCarried').children().first();
-const $gemsDeposited = $('#gemsDeposited').children().first();
-const $enemies = $('#enemies').children().first();
-const $modal = $('#myModal');
+const $lives = $('.lives').children().first();
+const $gemsCarried = $('.gemsCarried').children().first();
+const $gemsDeposited = $('.gemsDeposited').children().first();
+const $enemies = $('.enemies').children().first();
+const $modal = $('.modal');
+const $overlay = $('.overlay');
+const $overlayClose = $('#close');
+const $help = $('.help');
 
 // object that holds info about enemies
 
@@ -47,13 +52,13 @@ Enemy.prototype.checkCollision = function() {
             lives--;
             $lives.text(lives);
             if (lives === 0) {
-                  end()
+                  end();
             }
             if (enemies > startingEnemies) {
                   enemies--;
                   allEnemies.pop();
                   $enemies.text(enemies);
-            }
+            };
             gemsCarried -= lostGems;
             if (gemsCarried < 0) {
                   gemsCarried = 0;
@@ -97,7 +102,7 @@ function getRandomGem() {
 
 Gem.prototype.render = function() {
       ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
-}
+};
 
 // function that checks if the player picked up a gem, it increments gemsPickedUp, and adds the value of the picked up gem to the gemsCarried
 // it updates the display with gemsCarried. A new gem is created to replace the last one and every enemyEveryNGems a new enemy is spawned
@@ -105,7 +110,6 @@ Gem.prototype.render = function() {
 
 Gem.prototype.checkPickup = function() {
       if (player.y <= this.y && player.x + 25 <= this.x + 88 && player.y + 60 >= this.y && player.x + 76 >= this.x + 11) {
-            console.log('pickup');
             gemsPickedUp++;
             gemsCarried += gem.value;
             $gemsCarried.text(gemsCarried);
@@ -116,7 +120,7 @@ Gem.prototype.checkPickup = function() {
                   $enemies.text(enemies);
             }
       }
-}
+};
 
 // object that holds info about our player
 
@@ -126,36 +130,9 @@ const Player = function(x, y) {
       this.y = y;
 };
 
-// function that limits the player from leaving the canvas and checks if the player got to the river
-// if the player got to the river increase gemsDeposited by gemsCarried if you had 5 or more get a life
-// set gems carried to 0 and display everything. Check if the player picked up a gem.
+// not necessary
 
 Player.prototype.update = function() {
-      if (this.x > 400) {
-            this.x = 400;
-      }
-      if (this.x < 0) {
-            this.x = 0;
-      }
-      if (this.y > 400) {
-            this.y = 400;
-      }
-      if (this.y < -80) {
-            this.y = -15;
-      }
-      if (this.y < 60) {
-            player.x = 202;
-            player.y = 400;
-            gemsDeposited += gemsCarried;
-            if (gemsCarried >= 5) {
-                  lives++;
-            }
-            gemsCarried = 0;
-            $gemsCarried.text(gemsCarried);
-            $gemsDeposited.text(gemsDeposited);
-            $lives.text(lives);
-      };
-      gem.checkPickup();
 };
 
 // Draw the player on the screen, required method for game
@@ -171,7 +148,7 @@ Player.prototype.handleInput = function (keyPressed) {
       switch (keyPressed) {
             case 'left':
                   this.x -= 101;
-                  break
+                  break;
             case 'right':
                   this.x += 101;
                   break;
@@ -196,7 +173,37 @@ Player.prototype.handleInput = function (keyPressed) {
             case 'char5':
                   this.sprite = 'images/char-princess-girl.png';
       }
-}
+
+      // limits the player from leaving the canvas and checks if the player got to the river
+      // if the player got to the river increase gemsDeposited by gemsCarried if you had 5 or more get a life
+      // set gems carried to 0 and display everything. Check if the player picked up a gem.
+
+      if (this.x > 400) {
+            this.x = 400;
+      }
+      if (this.x < 0) {
+            this.x = 0;
+      }
+      if (this.y > 400) {
+            this.y = 400;
+      }
+      if (this.y < -80) {
+            this.y = -15;
+      }
+      if (this.y < 60) {
+            this.x = 202;
+            this.y = 400;
+            gemsDeposited += gemsCarried;
+            if (gemsCarried >= 5) {
+                  lives++;
+            }
+            gemsCarried = 0;
+            $gemsCarried.text(gemsCarried);
+            $gemsDeposited.text(gemsDeposited);
+            $lives.text(lives);
+      }
+      gem.checkPickup();
+};
 
 // restart function that sets listening to true so we can track key presses
 // close the modal and clear the allEnemies array. Set lives and enemies gemsCarried, gemsDeposited and gemsPickedUp to initial values
@@ -281,3 +288,12 @@ document.addEventListener('keyup', function(e) {
             player.handleInput(allowedKeys[e.keyCode]);
       }
 });
+
+$overlayClose.click(function(){
+      $overlay.css('display', 'none');
+      $help.css('display', 'block');
+})
+$help.click(function(){
+      $overlay.css('display', 'block');
+      $help.css('display', 'none');
+})
