@@ -169,7 +169,7 @@ Player.prototype.handleInput = function (keyPressed) {
                   break;
             case 'char4':
                   this.sprite = 'images/char-pink-girl.png';
-                  break;
+                  break
             case 'char5':
                   this.sprite = 'images/char-princess-girl.png';
       }
@@ -245,8 +245,8 @@ function end() {
 // function that updates the modal with the number of gemsDeposited and the number of enemies present at the end.
 
 function populateModal() {
-      $('#modal-text').children().first().text(gemsDeposited);
-      $('#modal-text').children().next().text(enemies);
+      $('.modal-text').children().first().text(gemsDeposited);
+      $('.modal-text').children().next().text(enemies);
 }
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
@@ -292,8 +292,8 @@ document.addEventListener('keyup', function(e) {
 $overlayClose.click(function(){
       $overlay.css('display', 'none');
       $help.css('display', 'block');
-})
+});
 $help.click(function(){
       $overlay.css('display', 'block');
       $help.css('display', 'none');
-})
+});
